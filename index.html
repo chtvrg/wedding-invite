@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Свадьба Алины и Ильи</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Алина & Илья</h1>
+      <p>Приглашаем вас разделить с нами самый важный день</p>
+      <div class="countdown" id="countdown">
+        <div><span id="days">00</span><small>дней</small></div>
+        <div><span id="hours">00</span><small>часов</small></div>
+        <div><span id="minutes">00</span><small>минут</small></div>
+        <div><span id="seconds">00</span><small>секунд</small></div>
+      </div>
+      <p class="date">12 августа 2025</p>
+    </div>
+  </header>
+
+  <section class="about fade-in">
+    <div class="container">
+      <h2>Наша история</h2>
+      <p>Случайная встреча в кофейне. Общие книги, прогулки под дождём. И однажды — предложение руки и сердца под звёздами. Мы хотим разделить этот волшебный момент с вами.</p>
+    </div>
+  </section>
+
+  <section class="schedule fade-in">
+    <div class="container">
+      <h2>Программа дня</h2>
+      <div class="timeline">
+        <div class="event"><span>15:00</span> Сбор гостей</div>
+        <div class="event"><span>16:00</span> Церемония</div>
+        <div class="event"><span>17:00</span> Фотосессия</div>
+        <div class="event"><span>18:30</span> Ужин и музыка</div>
+        <div class="event"><span>20:00</span> Первый танец</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rsvp fade-in">
+    <div class="container">
+      <h2>Подтвердите участие</h2>
+      <form>
+        <input type="text" placeholder="Ваше имя" required />
+        <input type="email" placeholder="Email" required />
+        <select required>
+          <option disabled selected>Вы с нами?</option>
+          <option>Да, буду!</option>
+          <option>К сожалению, не смогу</option>
+        </select>
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>С любовью, Алина и Илья © 2025</p>
+  </footer>
+
+  <script>
+    // Обратный отсчёт
+    const targetDate = new Date("2025-08-12T15:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
