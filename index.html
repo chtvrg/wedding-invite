@@ -46,16 +46,15 @@
   <section class="rsvp fade-in">
     <div class="container">
       <h2>Подтвердите участие</h2>
-      <form>
-        <input type="text" placeholder="Ваше имя" required />
-        <input type="email" placeholder="Email" required />
-        <select required>
-          <option disabled selected>Вы с нами?</option>
-          <option>Да, буду!</option>
-          <option>К сожалению, не смогу</option>
-        </select>
-        <button type="submit">Отправить</button>
-      </form>
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSctAz5_6sn8YmHLquaOx38gc61ROXfRNyOr8FTd5rUbYYBogA/viewform?embedded=true" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0"
+        loading="lazy"
+        >
+        Загрузка…
+      </iframe>
     </div>
   </section>
 
@@ -71,17 +70,23 @@
       const now = new Date().getTime();
       const diff = targetDate - now;
 
+      if(diff < 0) {
+        document.getElementById('countdown').textContent = "Свадьба уже состоялась!";
+        return;
+      }
+
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      document.getElementById('days').textContent = days;
-      document.getElementById('hours').textContent = hours;
-      document.getElementById('minutes').textContent = minutes;
-      document.getElementById('seconds').textContent = seconds;
+      document.getElementById('days').textContent = days.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
     }
 
+    updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
 </body>
